@@ -1,0 +1,47 @@
+.contactUsContainer {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  
+  .contactUsHeading {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .contactUsForm {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .contactUsInput,
+  .contactUsTextArea {
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+  
+  .contactUsInput {
+    width: 100%;
+  }
+  
+  .contactUsTextArea {
+    width: 100%;
+  }
+  
+  .contactUsButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #e91e63;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .contactUsButton:hover {
+    background-color: #d81b60;
+  }
+  
