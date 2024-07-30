@@ -53,7 +53,6 @@ const MyFlights = () => {
         const data = event.data.split(",");
         const flight = data[0].split(":")[1];
         const update = data[1].split(":")[1];
-        // Handle the received message (update flight status, etc.)
         console.log("Message Received");
       };
 
@@ -62,7 +61,7 @@ const MyFlights = () => {
         console.info(
           "Disconnected from WebSocket server. Attempting to reconnect..."
         );
-        setTimeout(connectWebSocket, 20000); // Try to reconnect every 20 seconds
+        setTimeout(connectWebSocket, 20000);
       };
 
       ws.onerror = (error) => {

@@ -1,4 +1,3 @@
-import './App.css';
 import Home from "./pages/Home/Home.js";
 import AdminPage from './pages/Admin/Admin.js';
 import MyFlights from './pages/MyFlights/MyFlights.js';

@@ -1,10 +1,11 @@
 import React from 'react';
 import { Box, Typography, Link, Container, Grid, IconButton } from '@mui/material';
 import { Facebook, Twitter, Instagram } from '@mui/icons-material';
+import styles from './Footer.module.css';
 
 const Footer = () => {
   return (
-    <Box sx={{ py: 4, backgroundColor: 'rgba(0, 0, 0, 0.9)', color: 'white' }}>
+    <Box className={styles.footerContainer}>
       <Container>
         <Grid container spacing={2}>
           <Grid item xs={12} md={6}>
@@ -15,13 +16,13 @@ const Footer = () => {
               © 2024 FlightSync. All rights reserved.
             </Typography>
             <Box>
-              <IconButton color="inherit" href="https://facebook.com">
+              <IconButton className={styles.iconButton} href="https://facebook.com" aria-label="Facebook">
                 <Facebook />
               </IconButton>
-              <IconButton color="inherit" href="https://twitter.com">
+              <IconButton className={styles.iconButton} href="https://twitter.com" aria-label="Twitter">
                 <Twitter />
               </IconButton>
-              <IconButton color="inherit" href="https://instagram.com">
+              <IconButton className={styles.iconButton} href="https://instagram.com" aria-label="Instagram">
                 <Instagram />
               </IconButton>
             </Box>
@@ -30,16 +31,16 @@ const Footer = () => {
             <Typography variant="h6" gutterBottom>
               Quick Links
             </Typography>
-            <Link href="#" color="inherit" underline="none" sx={{ display: 'block', mb: 1 }}>
+            <Link className={styles.link} href="#">
               Home
             </Link>
-            <Link href="#" color="inherit" underline="none" sx={{ display: 'block', mb: 1 }}>
+            <Link className={styles.link} href="#">
               Features
             </Link>
-            <Link href="#contact" color="inherit" underline="none" sx={{ display: 'block', mb: 1 }}>
+            <Link className={styles.link} href="#contact">
               Contact
             </Link>
-            <Link href="#" color="inherit" underline="none" sx={{ display: 'block', mb: 1 }}>
+            <Link className={styles.link} href="#">
               Get Started
             </Link>
           </Grid>

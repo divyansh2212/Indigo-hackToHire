@@ -23,14 +23,12 @@ import {
   AccessTime as AccessTimeIcon,
   LocationOn as LocationOnIcon,
   Edit as EditIcon,
-  CheckCircle as CheckCircleIcon,
-  Error as ErrorIcon,
-  Cancel as CancelIcon,
   ArrowForward as ArrowForwardIcon,
   Flight as FlightIcon,
 } from "@mui/icons-material";
 import axios from "axios";
 import { useAuth } from "../../AuthContext";
+import styles from './FlightCard.module.css'; // Import the CSS module
 
 const FlightCard = ({ flight, onUpdateStatus, isAdmin }) => {
   const [open, setOpen] = useState(false);
@@ -62,11 +60,11 @@ const FlightCard = ({ flight, onUpdateStatus, isAdmin }) => {
   const getStatusChip = (status) => {
     switch (status) {
       case "On Time":
-        return <Chip label="On Time" sx={{ backgroundColor: '#4caf50', color: '#ffffff' }} />;
+        return <Chip label="On Time" className={styles.statusChipOnTime} />;
       case "Delayed":
-        return <Chip label="Delayed" sx={{ backgroundColor: '#ff9800', color: '#ffffff' }} />;
+        return <Chip label="Delayed" className={styles.statusChipDelayed} />;
       case "Cancelled":
-        return <Chip label="Cancelled" sx={{ backgroundColor: '#f44336', color: '#ffffff' }} />;
+        return <Chip label="Cancelled" className={styles.statusChipCancelled} />;
       default:
         return <Chip label="Unknown" />;
     }
@@ -74,26 +72,11 @@ const FlightCard = ({ flight, onUpdateStatus, isAdmin }) => {
 
   return (
     <>
-      <Card
-        sx={{
-          minWidth: 275,
-          marginBottom: 2,
-          borderRadius: 4, // Slight curve
-          backgroundColor: '#1e1e1e',
-          color: '#e0e0e0',
-          boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6)',
-          transition: 'background-color 0.3s, transform 0.3s',
-          '&:hover': {
-            backgroundColor: '#2c2c2c',
-            transform: 'scale(1.02)',
-            boxShadow: '0 12px 32px rgba(0, 0, 0, 0.8)',
-          },
-        }}
-      >
+      <Card className={styles.cardContainer}>
         <CardContent>
           <Grid container spacing={2}>
             <Grid item xs={12} display="flex" alignItems="center" justifyContent="space-between">
-              <Box display="flex" alignItems="center">
+              <Box display="flex" alignItems="center" className={styles.departureAirport}>
                 <FlightTakeoffIcon sx={{ mr: 1 }} />
                 <Typography variant="h6" component="div">
                   {flight.departureAirport} <ArrowForwardIcon sx={{ mx: 1 }} /> {flight.arrivalAirport}
@@ -103,13 +86,8 @@ const FlightCard = ({ flight, onUpdateStatus, isAdmin }) => {
               {isAdmin && (
                 <IconButton
                   onClick={handleClickOpen}
-                  sx={{
-                    color: "#03dac6",
-                    backgroundColor: "rgba(3, 218, 198, 0.2)",
-                    "&:hover": {
-                      backgroundColor: "rgba(3, 218, 198, 0.3)",
-                    },
-                  }}
+                  className={styles.iconButton}
+                  aria-label="Edit flight status"
                 >
                   <EditIcon />
                 </IconButton>
@@ -117,19 +95,19 @@ const FlightCard = ({ flight, onUpdateStatus, isAdmin }) => {
             </Grid>
             <Grid item xs={12}>
               <Typography variant="body1" display="flex" alignItems="center">
-                <FlightIcon sx={{ mr: 1, color: "#03dac6" }} />
+                <FlightIcon sx={{ mr: 1 }} className={styles.flightIcon} />
                 Flight ID: {flight.id}
               </Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography variant="body1" display="flex" alignItems="center">
-                <LocationOnIcon sx={{ mr: 1, color: "#03dac6" }} />
+                <LocationOnIcon sx={{ mr: 1 }} className={styles.flightIcon} />
                 Gate No.: {flight.gateNo}
               </Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography variant="body1" display="flex" alignItems="center">
-                <AccessTimeIcon sx={{ mr: 1, color: "#03dac6" }} />
+                <AccessTimeIcon sx={{ mr: 1 }} className={styles.flightIcon} />
                 Departure Time: {new Date(flight.departureDate).toLocaleString()}
               </Typography>
             </Grid>

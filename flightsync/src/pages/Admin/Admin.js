@@ -7,26 +7,9 @@ import Navbar from '../../components/Navbar/Navbar';
 import axios from 'axios';
 import { useAuth } from "../../AuthContext";
 import Footer from '../../components/Footer/Footer';
+import dummyFlights from './dummy.js';
 
 const AdminPage = () => {
-    const dummyFlights = [
-        { id: 'FL123', gate: 'A1', departureTime: '2024-08-01T10:00:00Z', source: 'JFK', destination: 'LAX', status: 'On Time' },
-        { id: 'FL456', gate: 'B2', departureTime: '2024-08-01T12:30:00Z', source: 'LAX', destination: 'ORD', status: 'Delayed' },
-        { id: 'FL789', gate: 'C3', departureTime: '2024-08-01T14:00:00Z', source: 'ORD', destination: 'DFW', status: 'Cancelled' },
-        { id: 'FL101', gate: 'D1', departureTime: '2024-08-01T16:45:00Z', source: 'DFW', destination: 'MIA', status: 'On Time' },
-        { id: 'FL102', gate: 'A4', departureTime: '2024-08-01T18:00:00Z', source: 'MIA', destination: 'ATL', status: 'Delayed' },
-        { id: 'FL103', gate: 'B5', departureTime: '2024-08-01T20:15:00Z', source: 'ATL', destination: 'SEA', status: 'On Time' },
-        { id: 'FL104', gate: 'C6', departureTime: '2024-08-01T22:30:00Z', source: 'SEA', destination: 'SFO', status: 'On Time' },
-        { id: 'FL105', gate: 'D7', departureTime: '2024-08-01T23:45:00Z', source: 'SFO', destination: 'JFK', status: 'Cancelled' },
-        { id: 'FL106', gate: 'A2', departureTime: '2024-08-02T05:00:00Z', source: 'JFK', destination: 'LAX', status: 'Delayed' },
-        { id: 'FL107', gate: 'B3', departureTime: '2024-08-02T07:15:00Z', source: 'LAX', destination: 'ORD', status: 'On Time' },
-        { id: 'FL108', gate: 'C8', departureTime: '2024-08-02T09:30:00Z', source: 'ORD', destination: 'DFW', status: 'On Time' },
-        { id: 'FL109', gate: 'D9', departureTime: '2024-08-02T11:45:00Z', source: 'DFW', destination: 'MIA', status: 'Delayed' },
-        { id: 'FL110', gate: 'A3', departureTime: '2024-08-02T13:00:00Z', source: 'MIA', destination: 'ATL', status: 'On Time' },
-        { id: 'FL111', gate: 'B4', departureTime: '2024-08-02T15:15:00Z', source: 'ATL', destination: 'SEA', status: 'Cancelled' },
-        { id: 'FL112', gate: 'C5', departureTime: '2024-08-02T17:30:00Z', source: 'SEA', destination: 'SFO', status: 'On Time' }
-    ];
-
     const [flights, setFlights] = useState([]);
     const { token } = useAuth();
 
@@ -42,12 +25,11 @@ const AdminPage = () => {
                     });
                     setFlights(response.data);
                 } else {
-                    // Fallback to dummy data if not authenticated or token is missing
                     setFlights(dummyFlights);
                 }
             } catch (error) {
                 console.error("Error fetching flights:", error);
-                setFlights(dummyFlights); // Use dummy data in case of error
+                setFlights(dummyFlights);
             }
         };
         fetchFlights();

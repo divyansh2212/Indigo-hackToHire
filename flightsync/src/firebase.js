@@ -15,23 +15,14 @@ const measurementId = process.env.REACT_APP_MEASUREMENT_ID;
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//   apiKey: apiKey,
-//   authDomain: authDomain,
-//   projectId: projectId,
-//   storageBucket: storageBucket,
-//   messagingSenderId: messagingSenderId,
-//   appId: appId,
-//   measurementId: measurementId,
-// };
 const firebaseConfig = {
-  apiKey: "AIzaSyBCVGoxzuezuHzEaKwB3hcdA2RDr8xbKsY",
-  authDomain: "flights-backend.firebaseapp.com",
-  projectId: "flights-backend",
-  storageBucket: "flights-backend.appspot.com",
-  messagingSenderId: "117674948368",
-  appId: "1:117674948368:web:9d9bab5e80d09e42179795",
-  measurementId: "G-CQW6FSZDLM",
+  apiKey: apiKey,
+  authDomain: authDomain,
+  projectId: projectId,
+  storageBucket: storageBucket,
+  messagingSenderId: messagingSenderId,
+  appId: appId,
+  measurementId: measurementId,
 };
 
 // Initialize Firebase
