@@ -10,16 +10,7 @@ const MyFlights = () => {
   const [flights, setFlights] = useState([]);
   const [socket, setSocket] = useState(null);
   const [connectionStatus, setConnectionStatus] = useState("Connecting...");
-  const [token, setToken] = useState(null);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      setToken(token);
-    } else {
-      console.error("Token Not Found");
-    }
-  }, []);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (!token) return;

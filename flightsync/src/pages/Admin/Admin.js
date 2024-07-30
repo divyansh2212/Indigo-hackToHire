@@ -5,13 +5,12 @@ import Grid from '@mui/material/Grid';
 import { Typography, Box } from "@mui/material";
 import Navbar from '../../components/Navbar/Navbar';
 import axios from 'axios';
-import { useAuth } from "../../AuthContext";
 import Footer from '../../components/Footer/Footer';
 import dummyFlights from './dummy.js';
 
 const AdminPage = () => {
     const [flights, setFlights] = useState([]);
-    const { token } = useAuth();
+    const token = localStorage.getItem("token");
 
     useEffect(() => {
         const fetchFlights = async () => {
