@@ -31,7 +31,7 @@ public class FlightStatusHandler extends TextWebSocketHandler {
         String payload = message.getPayload();
         if (payload.startsWith("subscribe:")) {
             String flight = payload.substring("subscribe:".length());
-            userSubscriptions.computeIfAbsent(session, s -> new HashSet<>()).add(flight)
+            userSubscriptions.computeIfAbsent(session, s -> new HashSet<>()).add(flight);
         }
     }
 
@@ -72,6 +72,7 @@ public class FlightStatusHandler extends TextWebSocketHandler {
         for (Map.Entry<WebSocketSession, Set<String>> entry : userSubscriptions.entrySet()) {
             WebSocketSession session = entry.getKey();
             Set<String> subscriptions = entry.getValue();
+            System.out.print("subscriptions: " + subscriptions);
             if (subscriptions.contains(flight.getFlightNumber()) && session.isOpen()) {
                 session.sendMessage(new TextMessage(
                         "flight:" + flight.getFlightNumber() +

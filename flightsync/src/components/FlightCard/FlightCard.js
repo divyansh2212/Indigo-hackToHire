@@ -77,7 +77,7 @@ const FlightCard = ({ flight, onUpdateStatus, isAdmin }) => {
         sx={{
           minWidth: 275,
           marginBottom: 2,
-          borderRadius: 4, // Slight curve
+          borderRadius: 4,
           backgroundColor: '#1e1e1e',
           color: '#e0e0e0',
           boxShadow: '0 8px 24px rgba(0, 0, 0, 0.6)',

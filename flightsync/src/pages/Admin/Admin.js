@@ -11,6 +11,7 @@ import dummyFlights from './dummy.js';
 const AdminPage = () => {
     const [flights, setFlights] = useState([]);
     const token = localStorage.getItem("token");
+    console.log(token)
 
     useEffect(() => {
         const fetchFlights = async () => {

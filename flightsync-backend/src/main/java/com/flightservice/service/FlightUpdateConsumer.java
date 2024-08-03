@@ -50,6 +50,4 @@ public class FlightUpdateConsumer {
         }
         return emails;
     }
-
-
 }

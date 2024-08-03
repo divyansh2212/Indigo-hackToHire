@@ -16,13 +16,13 @@ const measurementId = process.env.REACT_APP_MEASUREMENT_ID;
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: apiKey,
-  authDomain: authDomain,
-  projectId: projectId,
-  storageBucket: storageBucket,
-  messagingSenderId: messagingSenderId,
-  appId: appId,
-  measurementId: measurementId,
+  apiKey: "AIzaSyCVMgOd7j4iUw79-H_j_BaGE3YL4huNG9A",
+  authDomain: "indigo-flightsync.firebaseapp.com",
+  projectId: "indigo-flightsync",
+  storageBucket: "indigo-flightsync.appspot.com",
+  messagingSenderId: "159946718200",
+  appId: "1:159946718200:web:c42151d7e7c0e375b3740d",
+  measurementId: "G-WJK72HC3ER"
 };
 
 // Initialize Firebase

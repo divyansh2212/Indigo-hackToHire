@@ -73,7 +73,8 @@ public class FlightController {
     }
 
     @PostMapping
-    public ResponseEntity<?> addFlight(@RequestHeader("Authorization") String authorizationHeader, @RequestBody Flight flight) {
+    public ResponseEntity<?> addFlight(@RequestHeader("Authorization") String authorizationHeader,
+                                       @RequestBody Flight flight) {
         ResponseEntity<String> validationResponse = validateAdmin(authorizationHeader);
         if (validationResponse != null) {
             return validationResponse;
@@ -84,7 +85,9 @@ public class FlightController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateFlight(@RequestHeader("Authorization") String authorizationHeader, @PathVariable String id, @RequestBody Flight updatedFlight) throws IOException {
+    public ResponseEntity<?> updateFlight(@RequestHeader("Authorization") String authorizationHeader,
+                                          @PathVariable String id,
+                                          @RequestBody Flight updatedFlight) throws IOException {
         ResponseEntity<String> validationResponse = validateAdmin(authorizationHeader);
         if (validationResponse != null) {
             return validationResponse;
@@ -95,7 +98,7 @@ public class FlightController {
             return new ResponseEntity<>("Flight not found", HttpStatus.NOT_FOUND);
         }
 
-        if(!Objects.equals(existingFlightOpt.get(), updatedFlight)) {
+        if(!Objects.equals(existingFlightOpt.get(), updatedFlight)) { // both the flights are not same --> we need to update
             flightStatusHandler.broadcastFlightUpdate(updatedFlight);
             flightUpdateProducer.sendFlightUpdate(updatedFlight);
         }
@@ -119,7 +122,8 @@ public class FlightController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteFlight(@RequestHeader("Authorization") String authorizationHeader, @PathVariable String id) {
+    public ResponseEntity<?> deleteFlight(@RequestHeader("Authorization") String authorizationHeader,
+                                          @PathVariable String id) {
         ResponseEntity<String> validationResponse = validateAdmin(authorizationHeader);
         if (validationResponse != null) {
             return validationResponse;

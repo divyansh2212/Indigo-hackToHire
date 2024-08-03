@@ -44,7 +44,7 @@ const MyFlights = () => {
         const data = event.data.split(",");
         const flight = data[0].split(":")[1];
         const update = data[1].split(":")[1];
-        console.log("Message Received");
+        handleUpdateStatus(flight, update);
       };
 
       ws.onclose = () => {
@@ -72,11 +72,14 @@ const MyFlights = () => {
   }, [token]);
 
   const handleUpdateStatus = (id, newStatus) => {
-    setFlights(
-      flights.map((flight) =>
-        flight.id === id ? { ...flight, status: newStatus } : flight
-      )
-    );
+    console.log(`Updating flight with ID: ${id}, New Status: ${newStatus}`);
+
+    setFlights((prevFlights) => {
+      const updatedFlights = prevFlights.map((flight) =>
+        flight.flightNumber === id ? { ...flight, status: newStatus } : flight
+      );
+      return updatedFlights;
+    });
   };
 
   return (
@@ -84,28 +87,24 @@ const MyFlights = () => {
       <Navbar />
       <Container>
         <Box sx={{ textAlign: "center", marginBottom: 4 }}>
-        <Typography
+          <Typography
             variant="h4"
             component="h1"
             gutterBottom
             sx={{
-                color: "black",
-                fontWeight: "bold",
-                textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-                margin: '20px'
+              color: "black",
+              fontWeight: "bold",
+              textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+              margin: "20px",
             }}
-        >
+          >
             Flight List
-        </Typography>
+          </Typography>
         </Box>
         <Grid container spacing={3}>
           {flights.map((flight) => (
             <Grid item xs={12} sm={6} md={4} key={flight.id}>
-              <FlightCard
-                flight={flight}
-                onUpdateStatus={handleUpdateStatus}
-                isAdmin={false}
-              />
+              <FlightCard flight={flight} isAdmin={false} />
             </Grid>
           ))}
         </Grid>
